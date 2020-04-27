@@ -1,15 +1,6 @@
 // LogInForm
 
-import React, {useState, UseEffect} from 'react'
-import './App.css';
-import axios from 'axios'
-import * as yup from 'yup'
-import styled from "styled-components";
-
-const url = 'https://reqres.in/api/login'
-
-
-
+import React from 'react'
 
 function LogInForm (props){
     const{
