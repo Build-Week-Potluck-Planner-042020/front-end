@@ -14,30 +14,35 @@ const initialFormValues = {
     // texts input as a string
     username : '',
     password : '',
-    firstName : '',
-    lastName: '',
-    dateOfBirth: '',
-    address: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    role: ''
+    location: '',
+    // firstName : '',
+    // lastName: '',
+    // dateOfBirth: '',
+    // address: '',
+    // street: '',
+    // city: '',
+    // state: '',
+    // zipCode: '',
+//     role:{
+//       organizer: false,
+//       participant: false,
+//     }
 }
 
 //shape of the validation errors
 const initialFormErrors = {
   username : '',
   password : '',
-  firstName : '',
-  lastName: '',
-  dateOfBirth: '',
-  address: '',
-  street: '',
-  city: '',
-  state: '',
-  zipCode: '',
-  role: ''
+  location: '',
+  // firstName : '',
+  // lastName: '',
+  // dateOfBirth: '',
+  // address: '',
+  // street: '',
+  // city: '',
+  // state: '',
+  // zipCode: '',
+  // role: '',
 }
 
 //setting validation with error message
@@ -50,46 +55,46 @@ const formErrorCheck = yup.object().shape({
     .string()
     .min(5, 'password must have at least 5 characters in length!')
     .required('password is required'),
-  firstName: yup
-    .string()
-    .min(5, 'firstName must have at least 5 characters in length!')
-    .required('firstName is required'),
-  lastName: yup
-    .string()
-    .min(5, 'lastName must have at least 5 characters in length!')
-    .required('lastName is required'),
-  dateOfBirth: yup
-    .string()
-    .min(5, 'dateOfBirth must have at least 5 characters in length!')
-    .required('dateOfBirth is required'),
-  gender: yup
-    .string()
-    .matches(/(male|female)/, 'either male or female')
-    .required('role is required'),
-  address: yup
-    .string()
-    .min(5, 'address must have at least 5 characters in length!')
-    .required('address is required'),
-  street: yup
-    .string()
-    .min(5, 'street must have at least 5 characters in length!')
-    .required('street is required'),
-  city: yup
-    .string()
-    .min(5, 'city must have at least 5 characters in length!')
-    .required('city is required'),
-  state: yup
-    .string()
-    .min(5, 'Username must have at least 5 characters in length!')
-    .required('Username is required'),
-  zipCode: yup
-    .string()
-    .min(5, 'zipCode must have at least 5 characters in length!')
-    .required('zipCode is required'),
-  role: yup
-    .string()
-    .matches(/(organizer|participant)/, 'either organizer or participant')
-    .required('role is required'),
+  location: yup
+  .string()
+  .min(5, 'location must have at least 5 characters in length!')
+  .required('location is required'),
+  // firstName: yup
+  //   .string()
+  //   .min(5, 'firstName must have at least 5 characters in length!')
+  //   .required('firstName is required'),
+  // lastName: yup
+  //   .string()
+  //   .min(5, 'lastName must have at least 5 characters in length!')
+  //   .required('lastName is required'),
+  // dateOfBirth: yup
+  //   .string()
+  //   .min(5, 'dateOfBirth must have at least 5 characters in length!')
+  //   .required('dateOfBirth is required'),
+  // gender: yup
+  //   .string()
+  //   .matches(/(male|female)/, 'either male or female')
+  //   .required('gender is required'),
+  // street: yup
+  //   .string()
+  //   .min(5, 'street must have at least 5 characters in length!')
+  //   .required('street is required'),
+  // city: yup
+  //   .string()
+  //   .min(5, 'city must have at least 5 characters in length!')
+  //   .required('city is required'),
+  // state: yup
+  //   .string()
+  //   .min(5, 'Username must have at least 5 characters in length!')
+  //   .required('Username is required'),
+  // zipCode: yup
+  //   .string()
+  //   .min(5, 'zipCode must have at least 5 characters in length!')
+  //   .required('zipCode is required'),
+  // role: yup
+  //   .string()
+  //   .matches(/(organizer|participant)/, 'either organizer or participant')
+  //   .required('role is required'),
 
 
 })
@@ -113,7 +118,7 @@ function App () {
         .then(success => {
         setRegister([...register, success.data])
         console.log(success, 'are we getting data?????????')
-        debugger
+        // debugger
         })
         .catch(error => {
         // console.log(error, 'do we have errors??????')
@@ -130,8 +135,8 @@ function App () {
         axios.post(url, log)
         .then(success => {
             setRegister([...register, success.data]) 
-          debugger
-          // console.log(success, 'are we getting data?????????')
+          // debugger
+          console.log(success, 'are we getting data?????????')
         })
         .catch(error => {
          
@@ -143,6 +148,7 @@ function App () {
       useEffect(() => {
         formErrorCheck.isValid(formValues)
         .then(valid => {
+          console.log(valid)
           setFormDisabled(!valid)
         })
       }, [formValues])
@@ -153,16 +159,17 @@ function App () {
         const newRegister = {
           username: formValues.username,
           password: formValues.password,
-          firstName: formValues.firstName,
-          lastName: formValues.lastName,
-          dateOfBirth: formValues.dateOfBirth,
-          address: formValues.address,
-          street: formValues.street,
-          city: formValues.city,
-          state: formValues.state,
-          zipCode: formValues.zipCode,
-          role: formValues.role,
-          state: formValues.state,
+          location: formValues.location,
+          // firstName: formValues.firstName,
+          // lastName: formValues.lastName,
+          // dateOfBirth: formValues.dateOfBirth,
+          // address: formValues.address,
+          // street: formValues.street,
+          // city: formValues.city,
+          // state: formValues.state,
+          // zipCode: formValues.zipCode,
+          // role: formValues.role,
+          // state: formValues.state,
         }
           //this post new user to API
         //  setUsers([...users, newRegister]) 
@@ -195,9 +202,23 @@ function App () {
         });
       };
 
+      const onCheckboxChange = evt => {
+        const {name} = evt.target.name
+        const isChecked = evt.target.checked
+
+        setFormValues({
+          ...formValues,
+          role: {
+            ...formValues.role,
+            [name]: isChecked,
+          }
+        })
+      }
+
     return (
         <RegisterForm values={formValues}
         onInputChange={onInputChange}
+        // onCheckboxChange = {onCheckboxChange}
         onSubmit={onSubmit}
         disabled={formDisabled}
         errors={formErrors} />

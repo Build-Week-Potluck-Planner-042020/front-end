@@ -6,6 +6,7 @@ function RegisterForm (props){
     const{
         values,
         onInputChange,
+        // onCheckboxChange,
         onSubmit,
         disabled,
         errors,
@@ -17,15 +18,17 @@ function RegisterForm (props){
             <div>
                 <p>{errors.username}</p>
                 <p>{errors.password}</p>
-                <p>{errors.firstName}</p>
+                <p>{errors.location}</p>
+                {/* <p>{errors.firstName}</p>
                 <p>{errors.lastName}</p>
                 <p>{errors.dateOfBirth}</p>
+                <p>{errors.gender}</p>
                 <p>{errors.address}</p>
                 <p>{errors.street}</p>
                 <p>{errors.city}</p>
                 <p>{errors.state}</p>
                 <p>{errors.zipCode}</p>
-                <p>{errors.role}</p>
+                <p>{errors.role}</p> */}
             </div>
             <label>Username:&nbsp;
                 <input  value={values.username}
@@ -37,7 +40,7 @@ function RegisterForm (props){
                         onChange={onInputChange}
                         name='password'
                         type='text'/></label>
-            <label> First Name: </label> 
+            {/* <label> First Name: </label> 
                 <input  value = {values.firstName}
                         onChange = {onInputChange}
                         name = 'firstName'
@@ -56,12 +59,18 @@ function RegisterForm (props){
                  <select
                     value={values.gender}
                     onChange={onInputChange}
-                    name='civil'  >
+                    name='gender'  >
                     <option defaultValue=''>Please choose</option>
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>
                 </select>
-            <label>Address: </label>
+                 */}
+                <label>Location: </label>
+                <input  value = {values.location}
+                        onChange = {onInputChange}
+                        name = 'location'
+                        type = 'text'/>
+            {/* <h3>Address: </h3>
             <label>Street: </label>
                 <input  value = {values.street}
                         onChange = {onInputChange}
@@ -81,17 +90,21 @@ function RegisterForm (props){
                 <input  value = {values.zipCode}
                         onChange = {onInputChange}
                         name = 'zipCode'
-                        type = 'number'/>
-            <label>Role:</label>
-                <select value={values.role}
-                        onChange={onInputChange}
-                        name='role' >
-                    <option defaultValue=''>Please Select</option>
-                    <option value='organizer'>Organizer</option>
-                    <option value='participant'>Participant</option>
-                </select>
-           <button onClick = {onSubmit} disabled = {disabled}>Register</button>  
-
+                        type = 'number'/> */}
+            {/* <h3>Role:</h3>
+            <label> Organizer</label>
+                <input  checked={values.role.organizer}
+                        onChange={onCheckboxChange}
+                        name='organizer'
+                        type="checkbox" />
+                <label>Participant</label>
+                <input  checked={values.role.participant}
+                        onChange={onCheckboxChange}
+                        name='participant'
+                        type="checkbox" />  */}
+           <div>
+                <button onClick = {onSubmit} disabled = {disabled}>Register</button>  
+           </div>
         </form>
 
 
