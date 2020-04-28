@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
-
+import PrivateRoute from './utils/PrivateRoute'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Dashboard from './components/Dashboard'
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path='/'></Route>
+          <PrivateRoute path="/dashboard">
+            <Dashboard/>
+          </PrivateRoute>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

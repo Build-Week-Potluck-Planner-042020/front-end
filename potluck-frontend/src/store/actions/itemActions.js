@@ -1,4 +1,4 @@
-import axiosWithAuth from '../../utils/axiosWithAuth'
+import {axiosWithAuth} from '../../utils/axiosWithAuth'
 
 export const FETCH_ITEM_START = 'FETCH_ITEM_START'
 export const FETCH_ITEM_SUCCESS = 'FETCH_ITEM_SUCCESS'
@@ -14,7 +14,7 @@ export const UPDATE_ITEM_FAIL = 'UPDATE_ITEM_FAIL'
 
 export const ITEM_DELETE = 'ITEM_DELETE'
 
-const getItem = ()=>{
+export const getItem = ()=>{
     console.log('Potluck fetching')
       return dispatch => {
         dispatch({ type: FETCH_ITEM_START });
@@ -32,7 +32,7 @@ const getItem = ()=>{
           });
       };
 }
-const addItem = (item)=>{
+export const addItem = (item)=>{
     console.log('postSmurfs posting')
     console.log(item)
     return dispatch => {
@@ -51,7 +51,7 @@ const addItem = (item)=>{
           });
     }
 }
-const putItem = (item)=>{
+export const putItem = (item)=>{
     return dispatch =>{
         dispatch({ type: UPDATE_ITEM_START });
         axiosWithAuth()
@@ -62,10 +62,10 @@ const putItem = (item)=>{
         })
         .catch(err=>{
             console.log(err)
-            dispatch({ type: UPDATE_ITEM_FAIL, payload: res.data });
+            dispatch({ type: UPDATE_ITEM_FAIL, payload: err.data });
         })}
 }
-const deleteItem = (id)=>{
+export const deleteItem = (id)=>{
     return dispatch =>{
         axiosWithAuth()
         .delete(`/delete/${id}`)

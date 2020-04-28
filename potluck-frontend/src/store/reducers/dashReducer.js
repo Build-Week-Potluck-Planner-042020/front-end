@@ -6,6 +6,12 @@ import {
 } from '../actions/dashActions'
 
 import {
+    FETCH_POTLUCK_BY_ID_START,
+    FETCH_POTLUCK_BY_ID_SUCCESS,
+    FETCH_POTLUCK_BY_ID_FAILURE
+} from '../actions/dashActions'
+
+import {
     POST_POTLUCK_START,
     POST_POTLUCK_SUCCESS,
     POST_POTLUCK_FAIL
@@ -19,11 +25,9 @@ import {
 import {POTLUCK_DELETE} from '../actions/dashActions'
 
 export const initialState = {
-    id:"",
-    name:"",
-    date:"",
-    time:"",
-    location:"",
+    data:[],
+    potlucks:[],
+    isFetching:false
 }
 
 export const dashReducer = (state = initialState, action) => {
@@ -31,11 +35,23 @@ export const dashReducer = (state = initialState, action) => {
 ////////////////GET//////////////////////////////////////////////
         case FETCH_POTLUCK_START:
             console.log(action.payload)
-            return{...state}
+            return{...state, isFetching:true}
         case FETCH_POTLUCK_SUCCESS:
             console.log(action.payload)
-            return{...state}
+            return{
+                ...state,
+                data:action.payload}
         case FETCH_POTLUCK_FAILURE:
+            console.log(action.payload)
+            return{...state}
+/////////////////GET BY ID////////////////////////////////////////
+        case FETCH_POTLUCK_BY_ID_START:
+            console.log(action.payload)
+            return{...state}
+        case FETCH_POTLUCK_BY_ID_SUCCESS:
+            console.log(action.payload)
+            return{...state}
+        case FETCH_POTLUCK_BY_ID_FAILURE:
             console.log(action.payload)
             return{...state}
 ////////////////POST//////////////////////////////////////////////
