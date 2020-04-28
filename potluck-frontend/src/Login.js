@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import {useForm} from 'react-hook-form'
 
 const Login = () => {
+  const {register,errors} =useForm();
   const [signUp, setsignUp] = useState({ username: "", password: "" });
  
   
@@ -42,7 +44,9 @@ const Login = () => {
             placeholder="username"
             value={signUp.username}
             onChange={handleChange}
-          ></input>
+            ref={register({required: true, minLength: 6})}
+            ></input>
+          {errors.username && <p>Name too short</p>}
         </label>
         <label>
           Password
@@ -52,8 +56,10 @@ const Login = () => {
             placeholder="password"
             value={signUp.password}
             onChange={handleChange}
+            ref={register({required: true, minLength: 6})}
             >
           </input>
+          {errors.password && <p>Name too short</p>}
         </label>
         <input
         type ='submit' />
