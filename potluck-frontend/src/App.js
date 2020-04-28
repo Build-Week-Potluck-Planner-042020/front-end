@@ -8,6 +8,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          {console.log('app is loading')}
           <Route exact path='/'></Route>
           <PrivateRoute path="/dashboard">
             <Dashboard/>
