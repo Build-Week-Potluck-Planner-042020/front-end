@@ -5,7 +5,10 @@ import * as yup from 'yup'
 import styled from "styled-components";
 
 import RegisterForm from './RegisterForm'
-
+import Login from "./Login";
+import PrivateRoute from './utils/PrivateRoute'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Dashboard from './components/Dashboard'
         
 const url = 'https://potluck-server.herokuapp.com/api/register'
 
@@ -139,6 +142,25 @@ function App () {
         onSubmit={onSubmit}
         disabled={formDisabled}
         errors={formErrors} />
+      <Router>
+      <div className="App">
+        <Switch>
+          {console.log('app is loading')}
+        <Route path="/signup">
+          <RegisterForm values={formValues}
+            onInputChange={onInputChange}
+            // onCheckboxChange = {onCheckboxChange}
+            onSubmit={onSubmit}
+            disabled={formDisabled}
+            errors={formErrors} />
+          </Route>
+          <Route exact path="/" component={Login}></Route>
+          <PrivateRoute path="/dashboard">
+            <Dashboard/>
+          </PrivateRoute>
+        </Switch>
+      </div>
+    </Router>
 
     )
 
