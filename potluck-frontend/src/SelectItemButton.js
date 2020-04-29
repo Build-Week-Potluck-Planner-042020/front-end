@@ -5,7 +5,6 @@ const ItemList = styled.div`
 display: flex;
 flex-direction: column;
 align-content: space-around;
-
 `
 
 
@@ -13,7 +12,7 @@ align-content: space-around;
 function SelectItemButton (props) {
     const{
         onSubmit
-    }
+    } = props
     
     return (
         <ItemList>
