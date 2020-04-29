@@ -220,25 +220,19 @@ function App () {
       }
 
     return (
-        <RegisterForm values={formValues}
-        onInputChange={onInputChange}
-        // onCheckboxChange = {onCheckboxChange}
-        onSubmit={onSubmit}
-        disabled={formDisabled}
-        errors={formErrors} />
       <Router>
       <div className="App">
         <Switch>
           {console.log('app is loading')}
-        <Route path="/signup">
-          <RegisterForm values={formValues}
-            onInputChange={onInputChange}
-            // onCheckboxChange = {onCheckboxChange}
-            onSubmit={onSubmit}
-            disabled={formDisabled}
-            errors={formErrors} />
-          </Route>
           <Route exact path="/" component={Login}></Route>
+          <Route path="/signup">
+            <RegisterForm values={formValues}
+              onInputChange={onInputChange}
+              // onCheckboxChange = {onCheckboxChange}
+              onSubmit={onSubmit}
+              disabled={formDisabled}
+              errors={formErrors} />
+          </Route>
           <PrivateRoute path="/dashboard">
             <Dashboard/>
           </PrivateRoute>

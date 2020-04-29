@@ -7,7 +7,7 @@ import {getPotluck, addPotluck} from '../store/actions/dashActions'
 const Dashboard = (props)=>{
     useEffect(()=>{
         props.getPotluck()
-    },[])
+    },[props])
     return(
     <div>
         rendering
