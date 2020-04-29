@@ -38,9 +38,9 @@ const formErrorCheck = yup.object().shape({
     .min(5, 'password must have at least 5 characters in length!')
     .required('password is required'),
   location: yup
-  .string()
-  .min(5, 'location must have at least 5 characters in length!')
-  .required('location is required'),
+    .string()
+    .min(5, 'location must have at least 5 characters in length!')
+    .required('location is required'),
 })
 
 

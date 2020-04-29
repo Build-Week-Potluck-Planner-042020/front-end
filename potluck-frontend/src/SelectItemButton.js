@@ -1,34 +1,37 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
+import React from 'react'
+import styled from "styled-components";
 
-const dummyUser = [{
-    id: 1,
-    userName: 'Matt',}
-]
+const ItemList = styled.div`
+display: flex;
+flex-direction: column;
+align-content: space-around;
 
-
-
-
+`
 
 
-function SelectItemButton () {
 
-    const postItem = item => {
-        axios.post(dummyUser, item)
-        .then (success => {
-          setOrders([success.data])
-          console.log(success.data, 'got the data....???????')
-        debugger
-        })
-        .catch(error => {
-          console.log(error, 'qqqqqqqqqqQQQQQQ???')
-        })
-      } 
-return (
+function SelectItemButton (props) {
+    const{
+        onSubmit
+    }
+    
+    return (
+        <ItemList>
+            <button onClick={onSubmit}> Mac and Cheese </button>
+            <button onClick={onSubmit}> Cheese pizza </button>
+            <button onClick={onSubmit}> Potato Salad </button>
+            <button onClick={onSubmit}> Greek Salad </button>
+            <button onClick={onSubmit}> Bread </button>
+            <button onClick={onSubmit}> Butter </button>
+            <button onClick={onSubmit}> Chicken Pasta </button>
+            <button onClick={onSubmit}> Grilled Pork Rib </button>
+            <button onClick={onSubmit}> Water Bottles </button>
+            <button onClick={onSubmit}> Cheese Cake </button>
+            <button onClick={onSubmit}> Paper Plates </button>
+            <button onClick={onSubmit}> Plastic Utensils </button>
+        </ItemList>
 
-<button onClick={onSubmit}> Select Item</button>
-
-)
+    )
 
 
 }
