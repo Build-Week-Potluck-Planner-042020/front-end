@@ -220,12 +220,7 @@ function App () {
       }
 
     return (
-        <RegisterForm values={formValues}
-        onInputChange={onInputChange}
-        // onCheckboxChange = {onCheckboxChange}
-        onSubmit={onSubmit}
-        disabled={formDisabled}
-        errors={formErrors} />
+        
       <Router>
       <div className="App">
         <Switch>
