@@ -1,8 +1,20 @@
 import React from 'react'
-
-const PotluckCard = ()=>{
+import { Link } from 'react-router-dom'
+const PotluckCard = props =>{
+    const {item} = props
+    console.log(props)
     return(
-        <div>pulling</div>
+        <div>
+            <section>
+                <Link to={`/PotluckPage/${item.id}`}>
+                    <h2>{item.name}</h2>
+                    <div>{item.location}</div>
+                    <time>{item.date}</time>
+                    <div></div>
+                    <time>{item.time}</time>
+                </Link>
+            </section>
+        </div>
     )
 }
 export default PotluckCard

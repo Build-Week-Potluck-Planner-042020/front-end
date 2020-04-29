@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import axios from 'axios'
+import React, { useState, useEffect } from "react";
 import {useForm} from 'react-hook-form'
 
-const Login = () => {
+import {axiosWithAuth} from '../utils/axiosWithAuth'
+
+const Login = (props) => {
   const {register,errors} =useForm();
   const [signUp, setsignUp] = useState({ username: "", password: "" });
  
@@ -10,20 +11,22 @@ const Login = () => {
   const submit = e => {
     e.preventDefault()
     console.log(signUp)
-    axios
-    .post('https://potluck-server.herokuapp.com/api/register',signUp)
-    .then(res =>{
-        
-        setsignUp({
-            username:'',
-            password:''
-        })
-
-    })
+    // useEffect(()=>{
+      axiosWithAuth()
+      .post('/login', signUp)
+      .then(res =>{
+          console.log(res)
+          localStorage.setItem("token", res.data.token);
+          props.history.push("/dashboard");
+          setsignUp({
+              username:'',
+              password:''
+          })
+      })
     .catch(error =>{
         console.log(error)
     })
-
+    // },[])
   }
   const handleChange = (event) => {
     const {
@@ -63,7 +66,7 @@ const Login = () => {
         </label>
         <input
         type ='submit' />
-
+        <button onClick={()=>{props.history.push('/signup')}}>Sign-up</button>
         
       </form>
     </div>
