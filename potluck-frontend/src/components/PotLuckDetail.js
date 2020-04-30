@@ -6,7 +6,7 @@ const PotluckDetail = ()=>{
     const [PotluckDetail, setPotluckDetail] = useState([])
 
     useEffect(()=>{
-        axios.get('https://potluck-server.herokuapp.com/api/users')
+        axios.get('https://potluck-server.herokuapp.com/api/potlucks')
         .then(firstResponse => {
             console.log("Details baby details",firstResponse)
             setPotluckDetail(firstResponse.data) 

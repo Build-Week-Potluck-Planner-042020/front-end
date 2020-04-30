@@ -1,30 +1,22 @@
-import React, { useEffect, useState} from 'react'
-import axios from 'axios'
+import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
-const PotluckCard = ()=>{
-    const [PotluckCard, setPotluckCard] = useState([])
-
-    useEffect(()=>{
-        axios.get( 'https://potluck-server.herokuapp.com/api/potlucks'  )
-        .then(Res => {
-            console.log("1stResponse",Res)
-            setPotluckCard(Res) 
-
-       
-
-
-        })
-
-
-            .catch(error => console.log('Error!',error))
-        },[])
-
-
-
-
-
+const PotluckCard = props =>{
+    const{push}= useHistory()
+    const {item} = props
+    // console.log(props)
     return(
-        <div>pulling</div>
+        <div>
+            <section>
+                <Link to={`/PotluckPage/${item.id}`}>
+                    <h2>{item.name}</h2>
+                    <div>{item.location}</div>
+                    <time>{item.date}</time>
+                    <div></div>
+                    <time>{item.time}</time>
+                </Link>
+            </section>
+        </div>
     )
 }
 export default PotluckCard

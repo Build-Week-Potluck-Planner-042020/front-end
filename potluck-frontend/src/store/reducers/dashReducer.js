@@ -22,64 +22,90 @@ import {
     UPDATE_POTLUCK_FAIL
 } from '../actions/dashActions'
 
-import {POTLUCK_DELETE} from '../actions/dashActions'
+import { POTLUCK_DELETE } from '../actions/dashActions'
 
 export const initialState = {
-    data:[],
-    potlucks:[],
-    isFetching:false
+    data: [],
+    potlucks: [],
+    currentPotluck:[],
+    // users:[],
+    // items:[],
+    isFetching: false,
+    isPosting:false
 }
 
 export const dashReducer = (state = initialState, action) => {
     switch (action.type) {
-////////////////GET//////////////////////////////////////////////
+        ////////////////GET//////////////////////////////////////////////
         case FETCH_POTLUCK_START:
-            console.log(action.payload)
-            return{...state, isFetching:true}
+            return { ...state, isFetching: true }
         case FETCH_POTLUCK_SUCCESS:
             console.log(action.payload)
-            return{
+            return {
                 ...state,
-                data:action.payload}
+                potlucks: action.payload,
+                isFetching:false
+            }
         case FETCH_POTLUCK_FAILURE:
             console.log(action.payload)
-            return{...state}
-/////////////////GET BY ID////////////////////////////////////////
+            return { ...state }
+        /////////////////GET BY ID////////////////////////////////////////
         case FETCH_POTLUCK_BY_ID_START:
-            console.log(action.payload)
-            return{...state}
+            return { ...state, isFetching: true }
         case FETCH_POTLUCK_BY_ID_SUCCESS:
-            console.log(action.payload)
-            return{...state}
+            // console.log(action.payload)
+            return { 
+                ...state,
+                currentPotluck: action.payload
+             }
         case FETCH_POTLUCK_BY_ID_FAILURE:
             console.log(action.payload)
-            return{...state}
-////////////////POST//////////////////////////////////////////////
+            return { ...state }
+        ////////////////POST//////////////////////////////////////////////
         case POST_POTLUCK_START:
-            console.log(action.payload)
-            return{...state}
+            return { ...state, isPosting:true }
         case POST_POTLUCK_SUCCESS:
             console.log(action.payload)
-            return{...state}
+            return { 
+                ...state,
+                potlucks:[...state.potlucks, action.payload],
+                isPosting:false
+             }
         case POST_POTLUCK_FAIL:
             console.log(action.payload)
-            return{...state}
-////////////////PUT//////////////////////////////////////////////
+            return { ...state }
+        ////////////////PUT//////////////////////////////////////////////
         case UPDATE_POTLUCK_START:
-            console.log(action.payload)
-            return{...state}
+            // console.log(action.payload)
+            return { ...state }
         case UPDATE_POTLUCK_SUCCESS:
             console.log(action.payload)
-            return{...state}
+            return { 
+                ...state,
+                // potlucks:[...state.potlucks, state.potlucks.filter((item)=>{
+                //     item.id === action.payload.id return action.payload.data
+                // })]
+             }
         case UPDATE_POTLUCK_FAIL:
             console.log(action.payload)
-            return{...state}
-////////////////DELETE//////////////////////////////////////////////
+            return { ...state }
+        ////////////////DELETE//////////////////////////////////////////////
         case POTLUCK_DELETE:
             console.log(action.payload)
-            return{...state}
-
+            return { ...state }
+        /////////////////GET USER BY ID////////////////////////////////////////
+        // case FETCH_USER_BY_ID_START:
+        //     console.log(action.payload)
+        //     return { ...state }
+        // case FETCH_USER_BY_ID_SUCCESS:
+        //     console.log(action.payload)
+        //     return { ...state }
+        // case FETCH_USER_BY_ID_FAILURE:
+        //     console.log(action.payload)
+        //     return { ...state }
+        /////////////////////////////////////////////////////////////////////
         default:
-        return state;
+            return state;
     }
+
 }
