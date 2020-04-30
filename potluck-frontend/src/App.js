@@ -4,7 +4,6 @@ import axios from 'axios'
 import * as yup from 'yup'
 import styled from "styled-components";
 
-
 import Navbar from './components/Navbar'
 import Login from "./components/Login";
 import RegisterForm from './components/RegisterForm'
