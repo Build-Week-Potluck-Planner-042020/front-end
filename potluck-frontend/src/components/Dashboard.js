@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react'
 import {connect} from 'react-redux'
 
@@ -12,7 +13,7 @@ const Dashboard = (props)=>{
     useEffect(()=>{
         props.getPotluck()
     },[])
-    console.log(props)
+    
     return(
     <div>
         <section>
