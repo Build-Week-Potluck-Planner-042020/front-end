@@ -226,7 +226,7 @@ function App () {
       <Router>
       <div className="App">
         <Switch>
-          {console.log('app is loading')}
+          
         <Route path="/signup">
           <RegisterForm values={formValues}
             onInputChange={onInputChange}
