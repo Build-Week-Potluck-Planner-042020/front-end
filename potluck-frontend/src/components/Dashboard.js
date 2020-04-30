@@ -26,7 +26,7 @@ const Dashboard = (props)=>{
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     return {
         potlucks:state.dashboard.potlucks
     };

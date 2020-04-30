@@ -81,7 +81,7 @@ const OrganizerPage = (props) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     return {
       state:state.dashboard.potlucks
     };
