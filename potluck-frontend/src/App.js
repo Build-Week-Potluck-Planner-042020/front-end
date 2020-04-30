@@ -9,6 +9,8 @@ import Login from "./Login";
 import PrivateRoute from './utils/PrivateRoute'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Dashboard from './components/Dashboard'
+import PotluckCard from './components/PotluckCard'
+import PotluckDetail from './components/PotLuckDetail'
         
 const url = 'https://potluck-server.herokuapp.com/api/register'
 
@@ -233,6 +235,10 @@ function App () {
             disabled={formDisabled}
             errors={formErrors} />
           </Route>
+          {/* Added by mike to check */}
+          <Route exact path="/PotluckCard" component={PotluckCard}></Route>
+          <Route exact path="/PotluckDetail" component={PotluckDetail}></Route>
+          {/* Added by mike to check */}
           <Route exact path="/" component={Login}></Route>
           <PrivateRoute path="/dashboard">
             <Dashboard/>
