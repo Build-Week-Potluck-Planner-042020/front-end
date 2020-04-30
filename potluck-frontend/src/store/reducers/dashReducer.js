@@ -27,6 +27,7 @@ import { POTLUCK_DELETE } from '../actions/dashActions'
 export const initialState = {
     data: [],
     potlucks: [],
+    currentPotluck:[],
     users:[],
     items:[],
     isFetching: false,
@@ -50,11 +51,13 @@ export const dashReducer = (state = initialState, action) => {
             return { ...state }
         /////////////////GET BY ID////////////////////////////////////////
         case FETCH_POTLUCK_BY_ID_START:
-            console.log(action.payload)
-            return { ...state }
+            return { ...state, isFetching: true }
         case FETCH_POTLUCK_BY_ID_SUCCESS:
-            console.log(action.payload)
-            return { ...state }
+            // console.log(action.payload)
+            return { 
+                ...state,
+                currentPotluck: action.payload
+             }
         case FETCH_POTLUCK_BY_ID_FAILURE:
             console.log(action.payload)
             return { ...state }

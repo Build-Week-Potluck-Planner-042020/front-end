@@ -1,16 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {connect} from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-const PotluckPage = ()=>{
+import {getPotluckById} from '../store/actions/dashActions'
+
+const PotluckPage = (props)=>{
     const params= useParams()
-    console.log(params)
+    // console.log(params.id)
+    console.log(props)
+    useEffect(()=>{
+        props.getPotluckById(params.id)
+    },[])
     //filter through all users and all items. either here or in the reducer
     return(
         <div>
             <div>we got here</div>
-            <div>{`${params.id}`}</div>
+            <div>
+                <h1>Potluck Info</h1>
+                <h2>{props.details.name}</h2>
+                <div>{props.details.host}</div>
+                <div>{props.details.location}</div>
+                <div>{props.details.date}</div>
+                <div>{props.details.time}</div>
+            </div>
         </div>
     )
 }
 
-export default PotluckPage
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+      details:state.dashboard.currentPotluck
+    };
+  };
+
+export default connect(
+    mapStateToProps,
+    {getPotluckById})(PotluckPage)
