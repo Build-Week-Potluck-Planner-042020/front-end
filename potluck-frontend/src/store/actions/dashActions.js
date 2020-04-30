@@ -60,7 +60,7 @@ export const addPotluck = (item)=>{
     return dispatch => {
         dispatch({ type: POST_POTLUCK_START });
         axiosWithAuth()
-	      .post("/login", item)
+	      .post("/potlucks", item)
 	      .then(res => {
 	        dispatch({ type: POST_POTLUCK_SUCCESS, payload: res.data });
 	        console.log("success", res);

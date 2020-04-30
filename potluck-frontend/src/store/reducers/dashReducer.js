@@ -27,7 +27,10 @@ import { POTLUCK_DELETE } from '../actions/dashActions'
 export const initialState = {
     data: [],
     potlucks: [],
-    isFetching: false
+    users:[],
+    items:[],
+    isFetching: false,
+    isPosting:false
 }
 
 export const dashReducer = (state = initialState, action) => {
@@ -39,7 +42,7 @@ export const dashReducer = (state = initialState, action) => {
             console.log(action.payload)
             return {
                 ...state,
-                data: action.payload,
+                potlucks: action.payload,
                 isFetching:false
             }
         case FETCH_POTLUCK_FAILURE:
@@ -57,11 +60,14 @@ export const dashReducer = (state = initialState, action) => {
             return { ...state }
         ////////////////POST//////////////////////////////////////////////
         case POST_POTLUCK_START:
-            console.log(action.payload)
-            return { ...state }
+            return { ...state, isPosting:true }
         case POST_POTLUCK_SUCCESS:
             console.log(action.payload)
-            return { ...state }
+            return { 
+                ...state,
+                potlucks:[...state.potlucks, action.payload],
+                isPosting:false
+             }
         case POST_POTLUCK_FAIL:
             console.log(action.payload)
             return { ...state }
