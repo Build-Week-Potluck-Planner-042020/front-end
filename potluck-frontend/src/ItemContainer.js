@@ -1,11 +1,20 @@
 import React from 'react'
 import styled from "styled-components";
 
-
-
-
-
-
+useEffect(() => {
+    const getItems = () => {
+      axios
+        .get('https://potluck-server.herokuapp.com/api/potlucks/items ')
+        .then(response => {
+          setItems(response.data);
+        })
+        .catch(error => {
+          console.error('Server Error', error);
+        });
+    }
+    
+    getItems();
+  }, []);
 
 
 

@@ -58,7 +58,7 @@ function App () {
 
 
     //fetching user form from API and setting them in state
-    const gerRegister = () => {
+    const getRegister = () => {
         axios.get(url)
         .then(success => {
         setRegister([...register, success.data])
@@ -71,7 +71,7 @@ function App () {
     }
     //getting user from API
     useEffect(() => {
-        gerRegister()
+        getRegister()
     }, [])
 
     //creating a function to post new log in to the Array and setting updated list of register in state
