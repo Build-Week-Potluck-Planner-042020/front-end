@@ -11,7 +11,7 @@ import Dashboard from './components/Dashboard'
 import OrganizerPage from './components/OrganizerPage'
 import PotluckPage from './components/PotluckPage'
 
-import PrivateRoute from './utils/PrivateRoute'
+import PrivateRoute from './components/PrivateRoute'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
@@ -30,15 +30,15 @@ function App () {
               disabled={formDisabled}
               errors={formErrors} /> */}
           </Route>
-          <PrivateRoute path="/dashboard">
-            <Dashboard/>
-          </PrivateRoute>
-          <PrivateRoute path="/OrganizerPage">
-            <OrganizerPage/>
-          </PrivateRoute>
-          <PrivateRoute path='/PotluckPage/:id'>
-              <PotluckPage/>
-          </PrivateRoute>
+          <PrivateRoute path="/dashboard" component={Dashboard}/>
+            {/* <Dashboard/>
+          </PrivateRoute> */}
+          <PrivateRoute path="/OrganizerPage" component={OrganizerPage}/>
+            {/* <OrganizerPage/>
+          </PrivateRoute> */}
+          <PrivateRoute path='/PotluckPage/:id' component={PotluckPage}/>
+              {/* <PotluckPage/>
+          </PrivateRoute> */}
         </Switch>
       </div>
     </Router>

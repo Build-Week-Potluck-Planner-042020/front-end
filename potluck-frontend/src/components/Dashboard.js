@@ -16,7 +16,7 @@ const Dashboard = (props)=>{
     return(
     <div>
         <section>
-            {props.data.map (item=>(
+            {props.potlucks.map (item=>(
                 <PotluckCard item ={item} key={item.id}/>
             ))}
         </section>
@@ -26,9 +26,9 @@ const Dashboard = (props)=>{
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     return {
-      data:state.dashboard.data
+        potlucks:state.dashboard.potlucks
     };
   };
 

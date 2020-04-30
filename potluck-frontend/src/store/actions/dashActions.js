@@ -60,7 +60,7 @@ export const addPotluck = (item)=>{
     return dispatch => {
         dispatch({ type: POST_POTLUCK_START });
         axiosWithAuth()
-	      .post("/login", item)
+	      .post("/potlucks", item)
 	      .then(res => {
 	        dispatch({ type: POST_POTLUCK_SUCCESS, payload: res.data });
 	        console.log("success", res);
@@ -77,7 +77,7 @@ export const putPotluck = (item)=>{
     return dispatch =>{
         dispatch({ type: UPDATE_POTLUCK_START });
         axiosWithAuth()
-        .put(`/put`, item)
+        .put(`/potlucks/${item.id}`, item)
         .then(res=>{
             console.log(res)
             dispatch({ type: UPDATE_POTLUCK_SUCCESS, payload: res.data });
@@ -90,7 +90,7 @@ export const putPotluck = (item)=>{
 export const deletePotluck = (id)=>{
     return dispatch =>{
         axiosWithAuth()
-        .delete(`/delete/${id}`)
+        .delete(`/potlucks/${id}`)
         .then(res => {
             console.log(res)
                 dispatch({ type: POTLUCK_DELETE, payload: res.data })

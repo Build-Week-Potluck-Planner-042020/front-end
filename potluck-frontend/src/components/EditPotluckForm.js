@@ -1,76 +1,71 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
 
-import {addPotluck} from '../store/actions/dashActions'
-import { useHistory } from 'react-router-dom'
+import {putPotluck, getPotluckById} from '../store/actions/dashActions'
 
-const OrganizerPage = (props) => {
-    const {push}= useHistory()
-    const [newPotluck, setNewPotluck] = useState({
-        date:'', 
-        host:'', 
-        location:'', 
-        name:'', 
-        time:'',
-    })
 
-    const changeHandler = (e) => {
+const EditPotluckForm = (props) => {
+    // const {id,name, date, time, location, host}=props.details
+    const [editPotluck, setEditPotluck] = useState({})
+    useEffect(() => {
+        setEditPotluck(props.details);
+    }, [props])
+    // console.log(props.details)
+    // console.log(editPotluck.name)
+
+    const submitHandler= (e)=>{
         e.preventDefault()
-        setNewPotluck({...newPotluck, [e.target.name]: e.target.value})
+        // axiosWithAuth()
+        // .put(`/api/colors/${props.details.id}`, colorToEdit)
+        // .then(res=>{console.log(res)})
+        // .catch(err=>{console.log(err)})
+        // getColors()
+        props.putPotluck(editPotluck)
+        props.getPotluckById(props.details.id)
     }
-
-    const submitHandler = (e) => {
+    const changeHandler= (e)=>{
         e.preventDefault()
-        props.addPotluck(newPotluck)
-        setNewPotluck({
-            date:'', 
-            host:'', 
-            location:'', 
-            name:'', 
-            time:'',
-        })
-        push('/Dashboard')
+        setEditPotluck({...editPotluck, [e.target.name]: e.target.value})
     }
     return (
         <div>
-            <h1>Create your potluck</h1>
             <form onSubmit={submitHandler}>
                 <input
                     type="text"
                     name="date"
                     placeholder="date"
-                    value={newPotluck.date}
+                    value={editPotluck.date}
                     onChange={changeHandler}
                 />
                 <input
                     type="text"
                     name="host"
                     placeholder="host"
-                    value={newPotluck.host}
+                    value={editPotluck.host}
                     onChange={changeHandler}
                 />
                 <input
                     type="text"
                     name="location"
                     placeholder="location"
-                    value={newPotluck.location}
+                    value={editPotluck.location}
                     onChange={changeHandler}
                 />
                 <input
                     type="text"
                     name="name"
                     placeholder="name"
-                    value={newPotluck.name}
+                    value={editPotluck.name}
                     onChange={changeHandler}
                 />
                 <input
                     type="text"
                     name="time"
                     placeholder="time"
-                    value={newPotluck.time}
+                    value={editPotluck.time}
                     onChange={changeHandler}
                 />
-                <button type='submit'>Submit Potluck</button>
+                <button type='submit'>submit changes</button>
             </form>
         </div>
     )
@@ -79,10 +74,10 @@ const OrganizerPage = (props) => {
 const mapStateToProps = state => {
     // console.log(state)
     return {
-      state:state.dashboard.potlucks
+        details: state.dashboard.currentPotluck
     };
-  };
+};
 
 export default connect(
     mapStateToProps,
-    {addPotluck})(OrganizerPage)
+    {putPotluck, getPotluckById})(EditPotluckForm)
