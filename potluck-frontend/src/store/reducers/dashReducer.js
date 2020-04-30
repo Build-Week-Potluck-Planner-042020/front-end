@@ -28,8 +28,8 @@ export const initialState = {
     data: [],
     potlucks: [],
     currentPotluck:[],
-    users:[],
-    items:[],
+    // users:[],
+    // items:[],
     isFetching: false,
     isPosting:false
 }
@@ -76,11 +76,16 @@ export const dashReducer = (state = initialState, action) => {
             return { ...state }
         ////////////////PUT//////////////////////////////////////////////
         case UPDATE_POTLUCK_START:
-            console.log(action.payload)
+            // console.log(action.payload)
             return { ...state }
         case UPDATE_POTLUCK_SUCCESS:
             console.log(action.payload)
-            return { ...state }
+            return { 
+                ...state,
+                // potlucks:[...state.potlucks, state.potlucks.filter((item)=>{
+                //     item.id === action.payload.id return action.payload.data
+                // })]
+             }
         case UPDATE_POTLUCK_FAIL:
             console.log(action.payload)
             return { ...state }

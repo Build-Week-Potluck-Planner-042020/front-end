@@ -1,16 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
-import {getPotluckById} from '../store/actions/dashActions'
+import {getPotluckById, deletePotluck} from '../store/actions/dashActions'
+import EditPotluckForm from './EditPotluckForm'
 
 const PotluckPage = (props)=>{
     const params= useParams()
-    // console.log(params.id)
-    // console.log(props)
+    const {push}= useHistory()
+    const [addItem, setAddItem] = useState()
     useEffect(()=>{
         props.getPotluckById(params.id)
     },[])
+
+    const changeHandler = (e)=>{
+        e.preventDefault()
+    }
+    const submitHandler = (e)=>{
+        e.preventDefault()
+    }
+    const deleteProcess = ()=>{
+        props.deletePotluck(params.id)
+        push('/dashboard')
+    }
+
+    useEffect(()=>{
+        props.getPotluckById(params.id)
+    },[])
+    // useEffect(()=>{
+    //     props.getPotluckById(params.id)
+    // },[addItem])
     //filter through all users and all items. either here or in the reducer
     return(
         <div>
@@ -31,11 +50,23 @@ const PotluckPage = (props)=>{
             </div>
             <div>
                 <h3>potluck controls</h3>
-                <form>
-
-                </form>
+                <h4>edit details</h4>
+                <EditPotluckForm />
                 <div>
-
+                    <h4>add items</h4>
+                    <form onSubmit={submitHandler}>
+                    <input
+                        type="text"
+                        name="items"
+                        placeholder="item"
+                        value={addItem}
+                        onChange={changeHandler}
+                    />
+                    </form>
+                </div>
+                <div>
+                    <h4>delete potluck</h4>
+                    <button onClick={()=>{deleteProcess()}}></button>
                 </div>
             </div>
         </div>
@@ -51,4 +82,4 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {getPotluckById})(PotluckPage)
+    {getPotluckById, deletePotluck})(PotluckPage)
