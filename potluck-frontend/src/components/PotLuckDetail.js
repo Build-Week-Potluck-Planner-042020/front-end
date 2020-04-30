@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react'
-import Attendees from 'C:/Users/User/Desktop/lambdaflex/front-end/potluck-frontend/src/components/Attendees.js'
+import Attendees from './Attendees'
 import {Container, Card, CardBody, CardHeader, CardText, Col, CardImg, Button, Row } from "reactstrap";
 import axios from 'axios'
 const PotluckDetail = ()=>{

@@ -26,7 +26,7 @@ const PotluckPage = (props)=>{
 
     useEffect(()=>{
         props.getPotluckById(params.id)
-    },[])
+    },[params.id])
     // useEffect(()=>{
     //     props.getPotluckById(params.id)
     // },[addItem])
