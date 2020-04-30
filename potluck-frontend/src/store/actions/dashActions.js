@@ -1,4 +1,4 @@
-import {axiosWithAuth} from '../../utils/axiosWithAuth'
+    import {axiosWithAuth} from '../../utils/axiosWithAuth'
 
 export const FETCH_POTLUCK_START = 'FETCH_POTLUCK_START'
 export const FETCH_POTLUCK_SUCCESS = 'FETCH_POTLUCK_SUCCESS'
