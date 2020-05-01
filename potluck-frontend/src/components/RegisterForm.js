@@ -7,40 +7,18 @@ const url = 'https://potluck-server.herokuapp.com/api/register'
 
 // shape of the form
 const initialFormValues = {
-    // texts input as a string
-    username : '',
-    password : '',
-    // location: '',
-    // firstName : '',
-    // lastName: '',
-    // dateOfBirth: '',
-    // address: '',
-    // street: '',
-    // city: '',
-    // state: '',
-    // zipCode: '',
-//     role:{
-//       organizer: false,
-//       participant: false,
-//     }
+  // texts input as a string
+  username : '',
+  password : '',
 }
 
+//shape of the validation errors
 //shape of the validation errors
 const initialFormErrors = {
   username : '',
   password : '',
-  location: '',
-  // firstName : '',
-  // lastName: '',
-  // dateOfBirth: '',
-  // address: '',
-  // street: '',
-  // city: '',
-  // state: '',
-  // zipCode: '',
-  // role: '',
-
 }
+
 
 //setting validation with error message
 const formErrorCheck = yup.object().shape({
@@ -53,47 +31,9 @@ const formErrorCheck = yup.object().shape({
     .min(5, 'password must have at least 5 characters in length!')
     .required('password is required'),
   location: yup
-  .string()
-  .min(5, 'location must have at least 5 characters in length!')
-  .required('location is required'),
-  // firstName: yup
-  //   .string()
-  //   .min(5, 'firstName must have at least 5 characters in length!')
-  //   .required('firstName is required'),
-  // lastName: yup
-  //   .string()
-  //   .min(5, 'lastName must have at least 5 characters in length!')
-  //   .required('lastName is required'),
-  // dateOfBirth: yup
-  //   .string()
-  //   .min(5, 'dateOfBirth must have at least 5 characters in length!')
-  //   .required('dateOfBirth is required'),
-  // gender: yup
-  //   .string()
-  //   .matches(/(male|female)/, 'either male or female')
-  //   .required('gender is required'),
-  // street: yup
-  //   .string()
-  //   .min(5, 'street must have at least 5 characters in length!')
-  //   .required('street is required'),
-  // city: yup
-  //   .string()
-  //   .min(5, 'city must have at least 5 characters in length!')
-  //   .required('city is required'),
-  // state: yup
-  //   .string()
-  //   .min(5, 'Username must have at least 5 characters in length!')
-  //   .required('Username is required'),
-  // zipCode: yup
-  //   .string()
-  //   .min(5, 'zipCode must have at least 5 characters in length!')
-  //   .required('zipCode is required'),
-  // role: yup
-  //   .string()
-  //   .matches(/(organizer|participant)/, 'either organizer or participant')
-  //   .required('role is required'),
-
-
+    .string()
+    .min(5, 'location must have at least 5 characters in length!')
+    .required('location is required'),
 })
 
 function RegisterForm (props){
@@ -106,7 +46,7 @@ function RegisterForm (props){
     //     errors,
     // } = props
 
-    // const [register, setRegister] = useState([])
+    const [register, setRegister] = useState([])
     // console.log(register, '!!!!????!!!!???!!!???!')
 
     const[formValues, setFormValues] = useState(initialFormValues)
@@ -117,37 +57,38 @@ function RegisterForm (props){
 
 
     //fetching user form from API and setting them in state
-    // const gerRegister = () => {
-    //     axios.get(url)
-    //     .then(success => {
-    //     setRegister([...register, success.data])
-    //     console.log(success, 'are we getting data?????????')
-    //     // debugger
-    //     })
-    //     .catch(error => {
-    //     // console.log(error, 'do we have errors??????')
-    //     })
-    // }
-    // //getting user from API
-    // useEffect(() => {
-    //     gerRegister()
-    // }, [])
+    const getRegister = () => {
+      axiosWithAuth().get(url)
+      .then(success => {
+      setRegister([...register, success.data])
+      console.log(success, 'are we getting data?????????')
+      // debugger
+      })
+      .catch(error => {
+      // console.log(error, 'do we have errors??????')
+      })
+  }
+  //getting user from API
+  useEffect(() => {
+      getRegister()
+  }, [])
+
+    //creating a function to post new log in to the Array and setting updated list of register in state
 
     //creating a function to post new log in to the Array and setting updated list of register in state
 
     const postRegister = (log) =>{
-        axiosWithAuth()
-        .post('/register', log)
-        .then(success => {
-            // setRegister([...register, success.data]) 
-          // debugger
-          console.log(success, 'are we getting data?????????')
-        })
-        .catch(error => {
-         
-          // console.log(error, 'Is it Error??????')
-        })
-    }
+      axiosWithAuth().post(url, log)
+      .then(success => {
+          setRegister([...register, success.data]) 
+        // debugger
+        console.log(success, 'are we getting data?????????')
+      })
+      .catch(error => {
+       
+        // console.log(error, 'Is it Error??????')
+      })
+  }
 
       //setup to run validation if the form value changes and allowing enable and disable the submit button
       useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 
-import {getPotluckById, deletePotluck} from '../store/actions/dashActions'
+import {getPotluckById, deletePotluck, getPotluck} from '../store/actions/dashActions'
 import EditPotluckForm from './EditPotluckForm'
 
 const PotluckPage = (props)=>{
@@ -11,7 +11,7 @@ const PotluckPage = (props)=>{
     const [addItem, setAddItem] = useState()
     useEffect(()=>{
         props.getPotluckById(params.id)
-    },[])
+    },[params.id])
 
     const changeHandler = (e)=>{
         e.preventDefault()
@@ -21,6 +21,7 @@ const PotluckPage = (props)=>{
     }
     const deleteProcess = ()=>{
         props.deletePotluck(params.id)
+        props.props.getPotluck()
         push('/dashboard')
     }
 
@@ -82,4 +83,4 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {getPotluckById, deletePotluck})(PotluckPage)
+    {getPotluckById, deletePotluck, getPotluck})(PotluckPage)

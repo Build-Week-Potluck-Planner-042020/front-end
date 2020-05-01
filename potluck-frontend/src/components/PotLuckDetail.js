@@ -10,13 +10,7 @@ const PotluckDetail = ()=>{
         .then(firstResponse => {
             console.log("Details baby details",firstResponse)
             setPotluckDetail(firstResponse.data) 
-
-       
-
-
         })
-
-
             .catch(error => console.log('Error!',error))
         },[])
 
