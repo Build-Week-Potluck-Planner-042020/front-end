@@ -19,9 +19,9 @@ import {
 import {ITEM_DELETE} from '../actions/itemActions'
 
 export const initialState = {
-    id:"",
-    name:"",
-    toggle:""
+    items:[],
+    isFetching:false,
+    isPosting:false,
 }
 
 export const itemReducer = (state = initialState, action) => {
@@ -29,10 +29,14 @@ export const itemReducer = (state = initialState, action) => {
 ////////////////GET//////////////////////////////////////////////
         case FETCH_ITEM_START:
             console.log(action.payload)
-            return{...state}
+            return{...state, isFetching:true}
         case FETCH_ITEM_SUCCESS:
             console.log(action.payload)
-            return{...state}
+            return{
+                ...state,
+                items:action.payload,
+                isFetching:false,
+            }
         case FETCH_ITEM_FAILURE:
             console.log(action.payload)
             return{...state}

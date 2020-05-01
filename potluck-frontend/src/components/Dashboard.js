@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import PotluckCard from './PotluckCard'
 import {getPotluck, addPotluck} from '../store/actions/dashActions'
+import {getItems} from '../store/actions/itemActions'
 import { useHistory } from 'react-router-dom'
 
 const Dashboard = (props)=>{
@@ -12,7 +13,21 @@ const Dashboard = (props)=>{
     const {push}= useHistory()
     useEffect(()=>{
         props.getPotluck()
+        props.getItems()
     },[])
+    // useEffect(() => {
+    //     const getItems = () => {
+    //       axios
+    //         .get('https://potluck-server.herokuapp.com/api/foods ')
+    //         .then(response => {
+    //           setItems(response.data);
+    //         })
+    //         .catch(error => {
+    //           console.error('Server Error', error);
+    //         });
+    //     }
+    //     getItems();
+    //   }, []);
     
     return(
     <div>
@@ -27,7 +42,7 @@ const Dashboard = (props)=>{
 }
 
 const mapStateToProps = state => {
-    // console.log(state)
+    console.log(state)
     return {
         potlucks:state.dashboard.potlucks
     };
@@ -35,4 +50,4 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {getPotluck, addPotluck})(Dashboard)
+    {getPotluck, addPotluck, getItems})(Dashboard)

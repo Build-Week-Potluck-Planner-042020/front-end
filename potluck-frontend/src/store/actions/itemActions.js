@@ -14,12 +14,12 @@ export const UPDATE_ITEM_FAIL = 'UPDATE_ITEM_FAIL'
 
 export const ITEM_DELETE = 'ITEM_DELETE'
 
-export const getItem = ()=>{
+export const getItems = ()=>{
     console.log('Potluck fetching')
       return dispatch => {
         dispatch({ type: FETCH_ITEM_START });
         axiosWithAuth()
-          .get('/get')
+          .get('/foods')
           .then(res => {
             console.log(res)
             dispatch({ type: FETCH_ITEM_SUCCESS, payload: res.data });
@@ -27,13 +27,13 @@ export const getItem = ()=>{
           .catch(err => {
             dispatch({
               type: FETCH_ITEM_FAILURE,
-              payload: `Error ${err.response.status}: ${err.response.data}`
+              payload: `Error ${err}`
             });
           });
       };
 }
 export const addItem = (item)=>{
-    console.log('postSmurfs posting')
+    console.log('postItems posting')
     console.log(item)
     return dispatch => {
         dispatch({ type: POST_ITEM_START });
