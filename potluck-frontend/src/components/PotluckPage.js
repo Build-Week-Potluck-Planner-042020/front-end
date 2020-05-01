@@ -21,7 +21,6 @@ const PotluckPage = (props)=>{
     }
     const deleteProcess = ()=>{
         props.deletePotluck(params.id)
-        props.props.getPotluck()
         push('/dashboard')
     }
 

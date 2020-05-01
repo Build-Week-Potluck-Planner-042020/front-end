@@ -82,9 +82,18 @@ export const dashReducer = (state = initialState, action) => {
             console.log(action.payload)
             return { 
                 ...state,
-                // potlucks:[...state.potlucks, state.potlucks.filter((item)=>{
-                //     item.id === action.payload.id return action.payload.data
-                // })]
+                potlucks:state.potlucks.map((item, index) => {
+                    if (index !== action.index) {
+                      // This isn't the item we care about - keep it as-is
+                      return item
+                    }
+                
+                    // Otherwise, this is the one we want - return an updated value
+                    return {
+                      ...item,
+                      ...action.payload
+                    }
+                  })
              }
         case UPDATE_POTLUCK_FAIL:
             console.log(action.payload)
@@ -92,7 +101,10 @@ export const dashReducer = (state = initialState, action) => {
         ////////////////DELETE//////////////////////////////////////////////
         case POTLUCK_DELETE:
             console.log(action.payload)
-            return { ...state }
+            return { 
+                ...state,
+                potlucks:[state.potlucks.filter((item)=>{return item.id!==state.currentPotluck.id})]
+            }
         /////////////////GET USER BY ID////////////////////////////////////////
         // case FETCH_USER_BY_ID_START:
         //     console.log(action.payload)
