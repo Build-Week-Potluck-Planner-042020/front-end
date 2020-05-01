@@ -15,13 +15,14 @@ const Dashboard = (props)=>{
     },[])
     
     return(
-    <div>
-        <section>
+    <div className='dash'>
+        <section >
             {props.potlucks.map (item=>(
                 <PotluckCard item ={item} key={item.id}/>
             ))}
+            <button className="dash-btn" onClick={()=>{push('/OrganizerPage')}}>create potluck</button>
         </section>
-        <button onClick={()=>{push('/OrganizerPage')}}>create potluck</button>
+        
     </div>
     )
 }

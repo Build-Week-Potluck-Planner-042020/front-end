@@ -37,7 +37,7 @@
   }
 }
 
-
+/* mikes styling Login */
 .Body{
   background-image: url(./img/table-on-wooden-plank-326279.jpg);
   background-position: center;
@@ -61,27 +61,106 @@
   font-size: 6rem;
   color: rgb(167, 99, 47 );
   font-family: 'Times New Roman', Times, serif;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .H2-Header{
   font-size: 5rem;
   color:rgb(167, 99, 47 );
   font-family: 'Times New Roman', Times, serif;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .login-btn-clr{
-  background-color: rgba(255, 254, 253, 0.5);
+  background-color: rgba(255, 254, 253, 0.1);
   color: rgb(167, 99, 47 );
-  border-color:rgb(167, 99, 47 );
+  /* border-color:rgb(167, 99, 47 ); */
+  border: none;
+
 }
 .submit-btn{
   background-color: rgba(255, 254, 253, 0.5);
   color: rgb(94, 50, 16);
   font-weight: 500;
   border-color:rgb(167, 99, 47 );
+  width: 30%;
+}
+.signup-btn{
+  background-color: rgba(255, 254, 253, 0.5);
+  color: rgb(94, 50, 16);
+  font-weight: 500;
+  border-color:rgb(167, 99, 47 );
+
 }
 
 .login-Text{
   color: rgb(94, 50, 16);
   font-weight: 500;
+}
 
+/* Nav Items */
+.mr-2{
+  background-image: url(./img/navicon.png);
+  background-position: center;
+  background-size: cover;
+  
+  }
+  .mr-auto{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+  }
+
+.Nav-items{
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+text-decoration: none;
+font-family: 'Times New Roman', Times, serif;
+font-size: 2rem;
+text-decoration:'none'
+}
+/* DashBoard */
+
+.PLCard{
+  
+  
+  
+  
+  width: 400%;
+  background-color: rgba(255, 254, 253, 0.5);
+  margin: 1%;
+  border-color:rgb(167, 99, 47 );
+  border-width: thick;
+
+  font-size: 2rem;
+  color: rgb(167, 99, 47 );
+  font-family: 'Times New Roman', Times, serif;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.dash{
+  background-image: url(./img/table-on-wooden-plank-326279.jpg);
+  
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: flex-start;
+  background-position: center;
+  background-size: cover;
+  flex-wrap: wrap;
+
+  
+ 
+
+  
+}
+.dash-btn{
+  
+  width: 70%;
+  background-color: rgba(255, 254, 253, 0.5);
+  margin: 1%;
+  border-color:rgb(167, 99, 47 );
+  border-width: thick;
+  font-size: 2rem;
+  color: rgb(167, 99, 47 );
+  font-family: 'Times New Roman', Times, serif;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   
 }

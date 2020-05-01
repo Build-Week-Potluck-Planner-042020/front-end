@@ -61,7 +61,7 @@ const Login = (props) => {
               id="toggler"
               style={{ marginBottom: "1rem" }}
             >
-              Log In
+              👇👇👇👇
             </Button>
           </header>
 
@@ -92,8 +92,8 @@ const Login = (props) => {
                   ></input>
                   {errors.password && <p>Name too short</p>}
                 </label>
-                <input className="submit-btn" type="submit" />
-                <button
+                <input className="submit-btn" type="submit" value='Login' / >
+                <button  className="signup-btn"
                   onClick={() => {
                     props.history.push("/signup");
                   }}

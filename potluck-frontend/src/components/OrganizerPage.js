@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
+import { Container, Row, Col } from 'reactstrap';
 
 import {addPotluck} from '../store/actions/dashActions'
 import { useHistory } from 'react-router-dom'
@@ -32,9 +33,12 @@ const OrganizerPage = (props) => {
         push('/Dashboard')
     }
     return (
+        
         <div>
             <h1>Create your potluck</h1>
+            <Container>
             <form onSubmit={submitHandler}>
+            <Col>
                 <input
                     type="text"
                     name="date"
@@ -42,6 +46,8 @@ const OrganizerPage = (props) => {
                     value={newPotluck.date}
                     onChange={changeHandler}
                 />
+                </Col>
+                <Col>
                 <input
                     type="text"
                     name="host"
@@ -49,6 +55,7 @@ const OrganizerPage = (props) => {
                     value={newPotluck.host}
                     onChange={changeHandler}
                 />
+                </Col>
                 <input
                     type="text"
                     name="location"
@@ -56,6 +63,7 @@ const OrganizerPage = (props) => {
                     value={newPotluck.location}
                     onChange={changeHandler}
                 />
+                <Col>
                 <input
                     type="text"
                     name="name"
@@ -63,6 +71,8 @@ const OrganizerPage = (props) => {
                     value={newPotluck.name}
                     onChange={changeHandler}
                 />
+                </Col>
+                <Col>
                 <input
                     type="text"
                     name="time"
@@ -70,9 +80,11 @@ const OrganizerPage = (props) => {
                     value={newPotluck.time}
                     onChange={changeHandler}
                 />
+                </Col>
                 <button type='submit'>Submit Potluck</button>
             </form>
-        </div>
+            </Container>
+            </div>
     )
 }
 
