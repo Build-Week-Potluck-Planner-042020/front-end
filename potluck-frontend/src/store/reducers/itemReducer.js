@@ -21,6 +21,7 @@ import {ITEM_DELETE} from '../actions/itemActions'
 export const initialState = {
     id:"",
     name:"",
+    toggle:""
 }
 
 export const itemReducer = (state = initialState, action) => {
