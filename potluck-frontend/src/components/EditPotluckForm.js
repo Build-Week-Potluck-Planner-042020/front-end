@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
 
 import {putPotluck, getPotluckById} from '../store/actions/dashActions'
+import { useHistory } from 'react-router'
 
 
 const EditPotluckForm = (props) => {
     // const {id,name, date, time, location, host}=props.details
+    const {push}= useHistory()
     const [editPotluck, setEditPotluck] = useState({})
     useEffect(() => {
         setEditPotluck(props.details);
@@ -20,8 +22,10 @@ const EditPotluckForm = (props) => {
         // .then(res=>{console.log(res)})
         // .catch(err=>{console.log(err)})
         // getColors()
+        // console.log('submiting this ' , editPotluck)
         props.putPotluck(editPotluck)
         props.getPotluckById(props.details.id)
+        // push(`/PotluckPage/${editPotluck.id}`)
     }
     const changeHandler= (e)=>{
         e.preventDefault()

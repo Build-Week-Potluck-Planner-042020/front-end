@@ -83,7 +83,8 @@ export const dashReducer = (state = initialState, action) => {
             return { 
                 ...state,
                 potlucks:state.potlucks.map((item, index) => {
-                    if (index !== action.index) {
+                    console.log(action.payload.id)
+                    if (index !== action.payload.id) {
                       // This isn't the item we care about - keep it as-is
                       return item
                     }
@@ -93,7 +94,8 @@ export const dashReducer = (state = initialState, action) => {
                       ...item,
                       ...action.payload
                     }
-                  })
+                  }),
+                  currentPotluck:action.payload
              }
         case UPDATE_POTLUCK_FAIL:
             console.log(action.payload)

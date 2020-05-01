@@ -79,8 +79,8 @@ export const putPotluck = (item)=>{
         axiosWithAuth()
         .put(`/potlucks/${item.id}`, item)
         .then(res=>{
-            console.log(res)
-            dispatch({ type: UPDATE_POTLUCK_SUCCESS, payload: res.data });
+            console.log('put log',res)
+            dispatch({ type: UPDATE_POTLUCK_SUCCESS, payload: res.config.data });
         })
         .catch(err=>{
             console.log(err)

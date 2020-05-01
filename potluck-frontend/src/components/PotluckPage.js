@@ -24,9 +24,9 @@ const PotluckPage = (props)=>{
         push('/dashboard')
     }
 
-    useEffect(()=>{
-        props.getPotluckById(params.id)
-    },[params.id])
+    // useEffect(()=>{
+    //     props.getPotluckById(params.id)
+    // },[params.id])
     // useEffect(()=>{
     //     props.getPotluckById(params.id)
     // },[addItem])
@@ -66,7 +66,7 @@ const PotluckPage = (props)=>{
                 </div>
                 <div>
                     <h4>delete potluck</h4>
-                    <button onClick={()=>{deleteProcess()}}></button>
+                    <button onClick={()=>{deleteProcess()}}>delete</button>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@ const PotluckPage = (props)=>{
 }
 
 const mapStateToProps = state => {
-    // console.log(state)
+    console.log(state)
     return {
       details:state.dashboard.currentPotluck
     };
