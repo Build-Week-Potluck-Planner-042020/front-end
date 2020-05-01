@@ -150,7 +150,7 @@ function App () {
         <Route path="/signup">
           <RegisterForm values={formValues}
             onInputChange={onInputChange}
-            // onCheckboxChange = {onCheckboxChange}
+            onCheckboxChange = {onCheckboxChange}
             onSubmit={onSubmit}
             disabled={formDisabled}
             errors={formErrors} />

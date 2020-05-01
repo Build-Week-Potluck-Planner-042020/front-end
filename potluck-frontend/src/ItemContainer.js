@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
 
+
+//get request for food items
 useEffect(() => {
     const getItems = () => {
       axios
@@ -18,6 +20,7 @@ useEffect(() => {
 
 
 
+    // item mapping over to new food item card
 const ItemContainer = (props) => {
     useEffect(()=>{
         props.getItem()
@@ -26,7 +29,7 @@ const ItemContainer = (props) => {
     <div>
         rendering
         {props.potluck.map(item=>{<PotluckCard potlucks={item}/>})}
-    </div>
+   </div>
     )
 }
 export default ItemContainer
